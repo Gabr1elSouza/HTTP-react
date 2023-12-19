@@ -39,6 +39,21 @@
       "name": "Mochila",
       "price": "35.00",
       "id": 8
+    },
+    {
+      "name": "Suporte Monitor",
+      "price": "120.00",
+      "id": 9
+    },
+    {
+      "name": "Cabo HDMI",
+      "price": "35.00",
+      "id": 12
+    },
+    {
+      "name": "Suporte para microfone",
+      "price": "75.00",
+      "id": 13
     }
   ]
 }

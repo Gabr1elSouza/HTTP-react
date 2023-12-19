@@ -10,6 +10,9 @@ export const useFetch = (url) => {
   const [method, setMethod] = useState(null);
   const [callFetch, setCallFetch] = useState(false);
 
+  //6- loading
+  const [loading, setLoading] = useState(false);
+
   const httpConfig = (data, method) => {
     if (method === "POST") {
       setConfig({
@@ -25,20 +28,24 @@ export const useFetch = (url) => {
 
   useEffect(() => {
     const FetchData = async () => {
+      //6- loading
+      setLoading(true);
       const res = await fetch(url);
 
       const json = await res.json();
 
       setData(json);
+
+      setLoading(false);
     };
     FetchData();
-  }, [url]);
+  }, [url, callFetch]);
 
   //5- Refactor post
 
   useEffect(() => {
     const httpQuest = async () => {
-      if (method === "POST") {
+      if (method === "POST" && config) {
         let fetchOption = [url, config];
 
         const res = await fetch(...fetchOption);
@@ -51,5 +58,5 @@ export const useFetch = (url) => {
     httpQuest();
   }, [config, method, url]);
 
-  return { data, httpConfig };
+  return { data, httpConfig, loading };
 };
